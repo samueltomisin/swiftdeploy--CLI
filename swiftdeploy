@@ -239,7 +239,7 @@ def cmd_deploy():
 
     # Step 2 — bring up the stack
     print("  Starting stack with docker compose...")
-    _compose("up -d --remove-orphans")
+    result = _compose("up -d --remove-orphans", check=False)
 
     # Step 3 — read healthz URL from manifest
     manifest   = _load_manifest()
