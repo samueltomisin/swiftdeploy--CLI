@@ -21,7 +21,7 @@ ENV MODE=stable \
 
 EXPOSE 3000
 
-HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 \
-    CMD python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:3000/healthz')" || exit 1
+HEALTHCHECK --interval=15s --timeout=10s --start-period=30s --retries=5 \
+    CMD python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:3000/healthz')"
 
 CMD ["gunicorn", "--bind", "0.0.0.0:3000", "--workers", "2", "--timeout", "120", "main:app"]

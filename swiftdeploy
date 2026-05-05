@@ -319,7 +319,7 @@ def cmd_promote(target):
 
     # Step 3 — restart service container only (not nginx)
     print(f"\n  Restarting app container...")
-    _compose("restart app")
+    _compose("up -d --force-recreate app")
     _ok("App container restarted")
 
     # Step 4 — confirm new mode via /healthz
